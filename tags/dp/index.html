@@ -2,16 +2,16 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title>Etiqueta: DP 斜率优化 - Biscuit46的博客</title>
+<title>Tag: dp - Biscuit46的博客</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
     <meta property="og:type" content="website">
 <meta property="og:title" content="Biscuit46的博客">
-<meta property="og:url" content="http://yoursite.com/tags/DP-斜率优化/index.html">
+<meta property="og:url" content="http://yoursite.com/tags/dp/index.html">
 <meta property="og:site_name" content="Biscuit46的博客">
-<meta property="og:locale" content="zh-Hans">
+<meta property="og:locale" content="zh-cn">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Biscuit46的博客">
 
@@ -132,8 +132,8 @@
     <div class="card-content">
         <nav class="breadcrumb" aria-label="breadcrumbs">
         <ul>
-            <li><a href="/tags">Etiquetas</a></li>
-            <li class="is-active"><a href="#" aria-current="page">DP 斜率优化</a></li>
+            <li><a href="/tags">Tags</a></li>
+            <li class="is-active"><a href="#" aria-current="page">dp</a></li>
         </ul>
         </nav>
     </div>
@@ -155,7 +155,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    2 minutes read (About 256 words)
+                    2 分钟 read (About 270 words)
                 </span>
                 
             </div>
@@ -167,11 +167,17 @@
             
         </h1>
         <div class="content">
-            <p>考虑一下普通的DP,排个序直接转移就好了:<br><figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;math.h&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;set&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;map&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> re register</span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> file(a) freopen(a<span class="hljs-meta-string">".in"</span>,<span class="hljs-meta-string">"r"</span>,stdin);freopen(a<span class="hljs-meta-string">".out"</span>,<span class="hljs-meta-string">"w"</span>,stdout)</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">int</span> <span class="hljs-title">gi</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">	<span class="hljs-keyword">int</span> f=<span class="hljs-number">1</span>,sum=<span class="hljs-number">0</span>;<span class="hljs-keyword">char</span> ch=getchar();</span><br><span class="line">	<span class="hljs-keyword">while</span>(ch&gt;<span class="hljs-string">'9'</span> || ch&lt;<span class="hljs-string">'0'</span>)&#123;<span class="hljs-keyword">if</span>(ch==<span class="hljs-string">'-'</span>)f=<span class="hljs-number">-1</span>;ch=getchar();&#125;</span><br><span class="line">	<span class="hljs-keyword">while</span>(ch&gt;=<span class="hljs-string">'0'</span> &amp;&amp; ch&lt;=<span class="hljs-string">'9'</span>)&#123;sum=(sum&lt;&lt;<span class="hljs-number">3</span>)+(sum&lt;&lt;<span class="hljs-number">1</span>)+ch-<span class="hljs-string">'0'</span>;ch=getchar();&#125;</span><br><span class="line">	<span class="hljs-keyword">return</span> f*sum;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-keyword">int</span> n,t,a[<span class="hljs-number">500010</span>],sum[<span class="hljs-number">500010</span>],dp[<span class="hljs-number">500010</span>];</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">	<span class="hljs-keyword">while</span>(<span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>,&amp;n)==<span class="hljs-number">1</span>)&#123;</span><br><span class="line">		t=gi();</span><br><span class="line">		<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)a[i]=gi();</span><br><span class="line">		sort(a+<span class="hljs-number">1</span>,a+n+<span class="hljs-number">1</span>);</span><br><span class="line">		<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)sum[i]=sum[i<span class="hljs-number">-1</span>]+a[i];</span><br><span class="line">		<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)</span><br><span class="line">			<span class="hljs-built_in">memset</span>(dp,<span class="hljs-number">127</span>,<span class="hljs-keyword">sizeof</span>(dp));dp[<span class="hljs-number">0</span>]=<span class="hljs-number">0</span>;</span><br><span class="line">		<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=t;i&lt;=n;i++)<span class="hljs-comment">//求dp[i];</span></span><br><span class="line">			<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=<span class="hljs-number">1</span>;i-j+<span class="hljs-number">1</span>&gt;=t;j++)</span><br><span class="line">				dp[i]=min(dp[i],dp[j<span class="hljs-number">-1</span>]+(sum[i]-sum[j<span class="hljs-number">-1</span>])-a[j]*(i-j+<span class="hljs-number">1</span>));</span><br><span class="line">		<span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>,dp[n]);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>接着想怎么优化:<br>我们考虑一下它可以从下面这两个点(j,k)转移(k&lt;j)<br>然后发现把他们两个的dp转移式展开,可以发现如果j&gt;k的话把与i有关的隔离开,然后移过去就好了.<br>所以发现这个东西可以只和之前的有关,然后就可以用单调栈转移了.<br><del>其实这个优化叫做斜率优化</del></p>
-
+            <h2 id="传送门"><a href="#传送门" class="headerlink" title="传送门"></a>传送门</h2><p><a href="http://acm.hdu.edu.cn/showproblem.php?pid=3045" target="_blank" rel="noopener">HDU</a></p>
         </div>
         
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2019/01/04/HDU3045/#more">Read More</a>
+                </div>
+            </div>
+        </div>
         
         
     </div>
@@ -193,27 +199,64 @@
 <div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
     
         
+    
+        
+
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Categories
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/Solution/">
+            <span class="level-start">
+                <span class="level-item">Solution</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Tag Cloud
+        </h3>
+        <a href="/tags/dp/" style="font-size: 10px;">dp</a>
+    </div>
+</div>
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+            
 <div class="card widget">
     <div class="card-content">
         <nav class="level">
             <div class="level-item has-text-centered">
                 <div>
-                    <img class="image is-128x128 has-mb-6" src="/images/avatar.png" alt="Your name">
+                    <img class="image is-128x128 has-mb-6" src="https://www.gravatar.com/avatar/4dd92434e69a9ded4d5842783383da76?s=128" alt="Biscuit46">
                     
                     <p class="is-size-4 is-block">
-                        Your name
+                        Biscuit46
                     </p>
                     
                     
                     <p class="is-size-6 is-block">
-                        Your title
+                        Think Twice,Code Once
                     </p>
                     
-                    
-                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
-                        <i class="fas fa-map-marker-alt has-mr-7"></i>
-                        <span>Your location</span>
-                    </p>
                     
                 </div>
             </div>
@@ -222,7 +265,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Entrada
+                        Post
                     </p>
                     <p class="title has-text-weight-normal">
                         1
@@ -232,7 +275,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Categoria
+                        Category
                     </p>
                     <p class="title has-text-weight-normal">
                         1
@@ -242,7 +285,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Etiqueta
+                        Tag
                     </p>
                     <p class="title has-text-weight-normal">
                         1
@@ -252,7 +295,7 @@
         </nav>
         <div class="level">
             <a class="level-item button is-link is-rounded" href="http://github.com/Biscuit">
-                SEGUIR</a>
+                Follow</a>
         </div>
         
         
@@ -274,54 +317,12 @@
         
     </div>
 </div>
-    
-        
-    
-        
-
-
-    
-        
-<div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-            <h3 class="menu-label">
-                Categorias
-            </h3>
-            <ul class="menu-list">
-            <li>
-        <a class="level is-marginless" href="/categories/Solution/">
-            <span class="level-start">
-                <span class="level-item">Solution</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li>
-            </ul>
-        </div>
-    </div>
-</div>
-    
-        
-<div class="card widget">
-    <div class="card-content">
-        <h3 class="menu-label">
-            Nube de etiquetas
-        </h3>
-        <a href="/tags/DP-斜率优化/" style="font-size: 10px;">DP 斜率优化</a>
-    </div>
-</div>
-
-    
-    
-        <div class="column-right-shadow is-hidden-widescreen ">
         
             
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recientes
+            Recent
         </h3>
         
         <article class="media">
@@ -351,14 +352,14 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archivos
+            Archives
         </h3>
         <ul class="menu-list">
         
         <li>
             <a class="level is-marginless" href="/archives/2019/01/">
                 <span class="level-start">
-                    <span class="level-item">January 2019</span>
+                    <span class="level-item">一月 2019</span>
                 </span>
                 <span class="level-end">
                     <span class="level-item tag">1</span>
@@ -375,14 +376,14 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Etiquetas
+                Tags
             </h3>
             <ul class="menu-list">
                 
                 <li>
-                    <a class="level is-marginless" href="/tags/DP-斜率优化/">
+                    <a class="level is-marginless" href="/tags/dp/">
                         <span class="level-start">
-                            <span class="level-item">DP 斜率优化</span>
+                            <span class="level-item">dp</span>
                         </span>
                         <span class="level-end">
                             <span class="level-item tag">1</span>
@@ -409,8 +410,86 @@
         
 <div class="card widget">
     <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered">
+                <div>
+                    <img class="image is-128x128 has-mb-6" src="https://www.gravatar.com/avatar/4dd92434e69a9ded4d5842783383da76?s=128" alt="Biscuit46">
+                    
+                    <p class="is-size-4 is-block">
+                        Biscuit46
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        Think Twice,Code Once
+                    </p>
+                    
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Post
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        1
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Category
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        1
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Tag
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        1
+                    </p>
+                </div>
+            </div>
+        </nav>
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="http://github.com/Biscuit">
+                Follow</a>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="Github" href="http://github.com/biscuit46">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="RSS" href="/">
+                
+                <i class="fas fa-rss"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+<div class="card widget">
+    <div class="card-content">
         <h3 class="menu-label">
-            Recientes
+            Recent
         </h3>
         
         <article class="media">
@@ -440,14 +519,14 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archivos
+            Archives
         </h3>
         <ul class="menu-list">
         
         <li>
             <a class="level is-marginless" href="/archives/2019/01/">
                 <span class="level-start">
-                    <span class="level-item">January 2019</span>
+                    <span class="level-item">一月 2019</span>
                 </span>
                 <span class="level-end">
                     <span class="level-item tag">1</span>
@@ -464,14 +543,14 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Etiquetas
+                Tags
             </h3>
             <ul class="menu-list">
                 
                 <li>
-                    <a class="level is-marginless" href="/tags/DP-斜率优化/">
+                    <a class="level is-marginless" href="/tags/dp/">
                         <span class="level-start">
-                            <span class="level-item">DP 斜率优化</span>
+                            <span class="level-item">dp</span>
                         </span>
                         <span class="level-end">
                             <span class="level-item tag">1</span>
@@ -541,7 +620,7 @@
 </footer>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
-<script>moment.locale("zh-Hans");</script>
+<script>moment.locale("zh-cn");</script>
 
 
     
@@ -595,7 +674,7 @@ document.addEventListener('DOMContentLoaded', function () {
     
     
 
-<a id="back-to-top" title="Kembali ke atas" href="javascript:;">
+<a id="back-to-top" title="Back to Top" href="javascript:;">
     <i class="fas fa-chevron-up"></i>
 </a>
 <script src="/js/back-to-top.js" defer></script>
@@ -639,10 +718,10 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Entradas',
+                POSTS: 'Posts',
                 PAGES: 'Pages',
-                CATEGORIES: 'Categorias',
-                TAGS: 'Etiquetas',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
                 UNTITLED: '(Untitled)',
             },
             CONTENT_URL: '/content.json',
