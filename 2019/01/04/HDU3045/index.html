@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="Biscuit46的博客">
 <meta property="og:description" content="传送门HDU">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-01-04T11:37:18.453Z">
+<meta property="og:updated_time" content="2019-01-04T12:13:07.157Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HDU3045">
 <meta name="twitter:description" content="传送门HDU">
@@ -134,7 +134,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    2 分钟 读完 (大约 270 个字)
+                    3 分钟 读完 (大约 495 个字)
                 </span>
                 
             </div>
@@ -149,7 +149,7 @@
             <h2 id="传送门"><a href="#传送门" class="headerlink" title="传送门"></a>传送门</h2><p><a href="http://acm.hdu.edu.cn/showproblem.php?pid=3045" target="_blank" rel="noopener">HDU</a></p>
 <a id="more"></a>
 <h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>考虑一下普通的DP,排个序直接转移就好了:<br><figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;math.h&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;set&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;map&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> re register</span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> file(a) freopen(a<span class="hljs-meta-string">".in"</span>,<span class="hljs-meta-string">"r"</span>,stdin);freopen(a<span class="hljs-meta-string">".out"</span>,<span class="hljs-meta-string">"w"</span>,stdout)</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">int</span> <span class="hljs-title">gi</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">	<span class="hljs-keyword">int</span> f=<span class="hljs-number">1</span>,sum=<span class="hljs-number">0</span>;<span class="hljs-keyword">char</span> ch=getchar();</span><br><span class="line">	<span class="hljs-keyword">while</span>(ch&gt;<span class="hljs-string">'9'</span> || ch&lt;<span class="hljs-string">'0'</span>)&#123;<span class="hljs-keyword">if</span>(ch==<span class="hljs-string">'-'</span>)f=<span class="hljs-number">-1</span>;ch=getchar();&#125;</span><br><span class="line">	<span class="hljs-keyword">while</span>(ch&gt;=<span class="hljs-string">'0'</span> &amp;&amp; ch&lt;=<span class="hljs-string">'9'</span>)&#123;sum=(sum&lt;&lt;<span class="hljs-number">3</span>)+(sum&lt;&lt;<span class="hljs-number">1</span>)+ch-<span class="hljs-string">'0'</span>;ch=getchar();&#125;</span><br><span class="line">	<span class="hljs-keyword">return</span> f*sum;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-keyword">int</span> n,t,a[<span class="hljs-number">500010</span>],sum[<span class="hljs-number">500010</span>],dp[<span class="hljs-number">500010</span>];</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">	<span class="hljs-keyword">while</span>(<span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>,&amp;n)==<span class="hljs-number">1</span>)&#123;</span><br><span class="line">		t=gi();</span><br><span class="line">		<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)a[i]=gi();</span><br><span class="line">		sort(a+<span class="hljs-number">1</span>,a+n+<span class="hljs-number">1</span>);</span><br><span class="line">		<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)sum[i]=sum[i<span class="hljs-number">-1</span>]+a[i];</span><br><span class="line">		<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)</span><br><span class="line">			<span class="hljs-built_in">memset</span>(dp,<span class="hljs-number">127</span>,<span class="hljs-keyword">sizeof</span>(dp));dp[<span class="hljs-number">0</span>]=<span class="hljs-number">0</span>;</span><br><span class="line">		<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=t;i&lt;=n;i++)<span class="hljs-comment">//求dp[i];</span></span><br><span class="line">			<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=<span class="hljs-number">1</span>;i-j+<span class="hljs-number">1</span>&gt;=t;j++)</span><br><span class="line">				dp[i]=min(dp[i],dp[j<span class="hljs-number">-1</span>]+(sum[i]-sum[j<span class="hljs-number">-1</span>])-a[j]*(i-j+<span class="hljs-number">1</span>));</span><br><span class="line">		<span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>,dp[n]);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>接着想怎么优化:<br>我们考虑一下它可以从下面这两个点(j,k)转移(k&lt;j)<br>然后发现把他们两个的dp转移式展开,可以发现如果j&gt;k的话把与i有关的隔离开,然后移过去就好了.<br>所以发现这个东西可以只和之前的有关,然后就可以用单调栈转移了.<br><del>其实这个优化叫做斜率优化</del></p>
+<p>接着想怎么优化:<br>我们考虑一下它可以从下面这两个点(j,k)转移(k&lt;j)<br>然后发现把他们两个的dp转移式展开,可以发现如果j&gt;k的话把与i有关的隔离开,然后移过去就好了.<br>所以发现这个东西可以只和之前的有关,然后就可以用单调栈转移了.<br><del>其实这个优化叫做斜率优化</del><br><figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;math.h&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;set&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;map&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> re register</span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> int long long</span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> file(a) freopen(a<span class="hljs-meta-string">".in"</span>,<span class="hljs-meta-string">"r"</span>,stdin);freopen(a<span class="hljs-meta-string">".out"</span>,<span class="hljs-meta-string">"w"</span>,stdout)</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">int</span> <span class="hljs-title">gi</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">	<span class="hljs-keyword">int</span> f=<span class="hljs-number">1</span>,sum=<span class="hljs-number">0</span>;<span class="hljs-keyword">char</span> ch=getchar();</span><br><span class="line">	<span class="hljs-keyword">while</span>(ch&gt;<span class="hljs-string">'9'</span> || ch&lt;<span class="hljs-string">'0'</span>)&#123;<span class="hljs-keyword">if</span>(ch==<span class="hljs-string">'-'</span>)f=<span class="hljs-number">-1</span>;ch=getchar();&#125;</span><br><span class="line">	<span class="hljs-keyword">while</span>(ch&gt;=<span class="hljs-string">'0'</span> &amp;&amp; ch&lt;=<span class="hljs-string">'9'</span>)&#123;sum=(sum&lt;&lt;<span class="hljs-number">3</span>)+(sum&lt;&lt;<span class="hljs-number">1</span>)+ch-<span class="hljs-string">'0'</span>;ch=getchar();&#125;</span><br><span class="line">	<span class="hljs-keyword">return</span> f*sum;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-keyword">int</span> n,t,a[<span class="hljs-number">800010</span>],sum[<span class="hljs-number">800010</span>],dp[<span class="hljs-number">800010</span>],q[<span class="hljs-number">800010</span>];</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">dx</span><span class="hljs-params">(<span class="hljs-keyword">int</span> j,<span class="hljs-keyword">int</span> k)</span></span>&#123;</span><br><span class="line">	<span class="hljs-keyword">return</span> a[j+<span class="hljs-number">1</span>]-a[k+<span class="hljs-number">1</span>];</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">dy</span><span class="hljs-params">(<span class="hljs-keyword">int</span> j,<span class="hljs-keyword">int</span> k)</span></span>&#123;</span><br><span class="line">	<span class="hljs-keyword">return</span> dp[j]-sum[j]+j*a[j+<span class="hljs-number">1</span>]-(dp[k]-sum[k]+k*a[k+<span class="hljs-number">1</span>]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">getdp</span><span class="hljs-params">(<span class="hljs-keyword">int</span> i,<span class="hljs-keyword">int</span> j)</span></span>&#123;</span><br><span class="line">	<span class="hljs-keyword">return</span> dp[j]+(sum[i]-sum[j])-a[j+<span class="hljs-number">1</span>]*(i-j);</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">signed</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">	<span class="hljs-keyword">while</span>(<span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%lld%lld"</span>,&amp;n,&amp;t)==<span class="hljs-number">2</span>)&#123;</span><br><span class="line">		<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)a[i]=gi();</span><br><span class="line">		<span class="hljs-keyword">int</span> head=<span class="hljs-number">0</span>,tail=<span class="hljs-number">0</span>;q[<span class="hljs-number">0</span>]=<span class="hljs-number">0</span>;q[<span class="hljs-number">1</span>]=<span class="hljs-number">0</span>;dp[<span class="hljs-number">0</span>]=<span class="hljs-number">0</span>;</span><br><span class="line">		sort(a+<span class="hljs-number">1</span>,a+n+<span class="hljs-number">1</span>);</span><br><span class="line">		<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)sum[i]=sum[i<span class="hljs-number">-1</span>]+a[i];</span><br><span class="line">		<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">			<span class="hljs-keyword">while</span>(head&lt;tail &amp;&amp; dy(q[head+<span class="hljs-number">1</span>],q[head])&lt;=i*dx(q[head+<span class="hljs-number">1</span>],q[head]))head++;</span><br><span class="line">			dp[i]=getdp(i,q[head]);</span><br><span class="line">			<span class="hljs-keyword">int</span> j=i-t+<span class="hljs-number">1</span>;</span><br><span class="line">			<span class="hljs-keyword">if</span>(j&lt;t)<span class="hljs-keyword">continue</span>;</span><br><span class="line">			<span class="hljs-keyword">while</span>(head&lt;tail &amp;&amp; dy(j,q[tail])*dx(j,q[tail<span class="hljs-number">-1</span>])&lt;=dy(j,q[tail<span class="hljs-number">-1</span>])*dx(j,q[tail]))tail--;</span><br><span class="line">			q[++tail]=j;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="hljs-built_in">printf</span>(<span class="hljs-string">"%lld\n"</span>,dp[n]);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
         </div>
         
@@ -180,7 +180,42 @@
 
 
 
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/01/04/HDU4899/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">HDU4899</span>
+            </a>
+        </div>
+        
+        
+    </div>
+</div>
 
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="valine-thread"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#valine-thread' ,
+        notify: false,
+        verify: false,
+        app_id: 'p6kvq49R40Hc9Wv7fRUTrV1A-gzGzoHsz',
+        app_key: 'OUOFQBUXeFdC0FVSBKgsS9p9',
+        placeholder: '留下你的足迹~'
+    });
+</script>
+
+    </div>
+</div>
 </div>
                 
                 
@@ -218,7 +253,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        1
+                        3
                     </p>
                 </div>
             </div>
@@ -238,7 +273,7 @@
                         标签
                     </p>
                     <p class="title has-text-weight-normal">
-                        1
+                        2
                     </p>
                 </div>
             </div>
@@ -288,7 +323,7 @@
                 <span class="level-item">Solution</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">1</span>
+                <span class="level-item tag">3</span>
             </span>
         </a></li>
             </ul>
@@ -400,6 +435,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 <script src="/js/main.js" defer></script>
+
+    <!-- Edit here -->
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+    </script>
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
 
     
     <div class="searchbox ins-search">
