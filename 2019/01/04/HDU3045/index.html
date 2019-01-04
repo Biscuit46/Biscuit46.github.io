@@ -2,22 +2,22 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title>QaQ - Biscuit46的博客</title>
+<title>HDU3045 - Biscuit46的博客</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta name="description" content="突然发现hexo的Blog还是挺好看的,所以我现在可以开始浪费时间了.最近开始维护Blog(但是,handsome的博客也不能停!)">
+    <meta name="description" content="考虑一下普通的DP,排个序直接转移就好了:1234567891011121314151617181920212223242526272829303132333435#include&amp;lt;stdio.h&amp;gt;#include&amp;lt;stdlib.h&amp;gt;#include&amp;lt;string.h&amp;gt;#include&amp;lt;math.h&amp;gt;#include&amp;lt;algorithm&amp;gt;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="QaQ">
-<meta property="og:url" content="http://yoursite.com/2019/01/03/Hello-World/index.html">
+<meta property="og:title" content="HDU3045">
+<meta property="og:url" content="http://yoursite.com/2019/01/04/HDU3045/index.html">
 <meta property="og:site_name" content="Biscuit46的博客">
-<meta property="og:description" content="突然发现hexo的Blog还是挺好看的,所以我现在可以开始浪费时间了.最近开始维护Blog(但是,handsome的博客也不能停!)">
+<meta property="og:description" content="考虑一下普通的DP,排个序直接转移就好了:1234567891011121314151617181920212223242526272829303132333435#include&amp;lt;stdio.h&amp;gt;#include&amp;lt;stdlib.h&amp;gt;#include&amp;lt;string.h&amp;gt;#include&amp;lt;math.h&amp;gt;#include&amp;lt;algorithm&amp;gt;">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-01-03T09:13:30.469Z">
+<meta property="og:updated_time" content="2019-01-04T04:56:00.026Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="QaQ">
-<meta name="twitter:description" content="突然发现hexo的Blog还是挺好看的,所以我现在可以开始浪费时间了.最近开始维护Blog(但是,handsome的博客也不能停!)">
+<meta name="twitter:title" content="HDU3045">
+<meta name="twitter:description" content="考虑一下普通的DP,排个序直接转移就好了:1234567891011121314151617181920212223242526272829303132333435#include&amp;lt;stdio.h&amp;gt;#include&amp;lt;stdlib.h&amp;gt;#include&amp;lt;string.h&amp;gt;#include&amp;lt;math.h&amp;gt;#include&amp;lt;algorithm&amp;gt;">
 
 
 
@@ -87,7 +87,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt="QaQ" height="28">
+                <img src="/images/logo.svg" alt="HDU3045" height="28">
             
             </a>
         </div>
@@ -138,13 +138,17 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-01-03T09:02:37.000Z">2019-01-03</time>
+                <time class="level-item has-text-grey" datetime="2019-01-04T01:39:49.000Z">2019-01-04</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/DP-斜率游化/">DP 斜率游化</a>
+                </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    a few seconds read (About 44 words)
+                    2 minutes read (About 256 words)
                 </span>
                 
             </div>
@@ -152,11 +156,12 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                QaQ
+                HDU3045
             
         </h1>
         <div class="content">
-            <p>突然发现hexo的Blog还是挺好看的,所以我现在可以开始浪费时间了.<br>最近开始维护Blog(但是,handsome的博客也不能停!)</p>
+            <p>考虑一下普通的DP,排个序直接转移就好了:<br><figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;math.h&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;set&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;map&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> re register</span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> file(a) freopen(a<span class="hljs-meta-string">".in"</span>,<span class="hljs-meta-string">"r"</span>,stdin);freopen(a<span class="hljs-meta-string">".out"</span>,<span class="hljs-meta-string">"w"</span>,stdout)</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">int</span> <span class="hljs-title">gi</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">	<span class="hljs-keyword">int</span> f=<span class="hljs-number">1</span>,sum=<span class="hljs-number">0</span>;<span class="hljs-keyword">char</span> ch=getchar();</span><br><span class="line">	<span class="hljs-keyword">while</span>(ch&gt;<span class="hljs-string">'9'</span> || ch&lt;<span class="hljs-string">'0'</span>)&#123;<span class="hljs-keyword">if</span>(ch==<span class="hljs-string">'-'</span>)f=<span class="hljs-number">-1</span>;ch=getchar();&#125;</span><br><span class="line">	<span class="hljs-keyword">while</span>(ch&gt;=<span class="hljs-string">'0'</span> &amp;&amp; ch&lt;=<span class="hljs-string">'9'</span>)&#123;sum=(sum&lt;&lt;<span class="hljs-number">3</span>)+(sum&lt;&lt;<span class="hljs-number">1</span>)+ch-<span class="hljs-string">'0'</span>;ch=getchar();&#125;</span><br><span class="line">	<span class="hljs-keyword">return</span> f*sum;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-keyword">int</span> n,t,a[<span class="hljs-number">500010</span>],sum[<span class="hljs-number">500010</span>],dp[<span class="hljs-number">500010</span>];</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">	<span class="hljs-keyword">while</span>(<span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>,&amp;n)==<span class="hljs-number">1</span>)&#123;</span><br><span class="line">		t=gi();</span><br><span class="line">		<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)a[i]=gi();</span><br><span class="line">		sort(a+<span class="hljs-number">1</span>,a+n+<span class="hljs-number">1</span>);</span><br><span class="line">		<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)sum[i]=sum[i<span class="hljs-number">-1</span>]+a[i];</span><br><span class="line">		<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)</span><br><span class="line">			<span class="hljs-built_in">memset</span>(dp,<span class="hljs-number">127</span>,<span class="hljs-keyword">sizeof</span>(dp));dp[<span class="hljs-number">0</span>]=<span class="hljs-number">0</span>;</span><br><span class="line">		<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=t;i&lt;=n;i++)<span class="hljs-comment">//求dp[i];</span></span><br><span class="line">			<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=<span class="hljs-number">1</span>;i-j+<span class="hljs-number">1</span>&gt;=t;j++)</span><br><span class="line">				dp[i]=min(dp[i],dp[j<span class="hljs-number">-1</span>]+(sum[i]-sum[j<span class="hljs-number">-1</span>])-a[j]*(i-j+<span class="hljs-number">1</span>));</span><br><span class="line">		<span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>,dp[n]);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>接着想怎么优化:<br>我们考虑一下它可以从下面这两个点(j,k)转移(k&lt;j)<br>然后发现把他们两个的dp转移式展开,可以发现如果j&gt;k的话把与i有关的隔离开,然后移过去就好了.<br>所以发现这个东西可以只和之前的有关,然后就可以用单调栈转移了.<br><del>其实这个优化叫做斜率优化</del></p>
 
         </div>
         
@@ -252,10 +257,10 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Categorias
+                        Categoria
                     </p>
                     <p class="title has-text-weight-normal">
-                        0
+                        1
                     </p>
                 </div>
             </div>
@@ -309,7 +314,15 @@
                 Categorias
             </h3>
             <ul class="menu-list">
-            
+            <li>
+        <a class="level is-marginless" href="/categories/DP-斜率游化/">
+            <span class="level-start">
+                <span class="level-item">DP 斜率游化</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li>
             </ul>
         </div>
     </div>
@@ -329,18 +342,18 @@
         
         <article class="media">
             
-            <a href="/2019/01/03/Hello-World/" class="media-left">
+            <a href="/2019/01/04/HDU3045/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="QaQ">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="HDU3045">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-01-03T09:02:37.000Z">2019-01-03</time></div>
-                    <a href="/2019/01/03/Hello-World/" class="has-link-black-ter is-size-6">QaQ</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-01-04T01:39:49.000Z">2019-01-04</time></div>
+                    <a href="/2019/01/04/HDU3045/" class="has-link-black-ter is-size-6">HDU3045</a>
                     <p class="is-size-7 is-uppercase">
-                        
+                        <a class="has-link-grey -link" href="/categories/DP-斜率游化/">DP 斜率游化</a>
                     </p>
                 </div>
             </div>
@@ -407,18 +420,18 @@
         
         <article class="media">
             
-            <a href="/2019/01/03/Hello-World/" class="media-left">
+            <a href="/2019/01/04/HDU3045/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="QaQ">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="HDU3045">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-01-03T09:02:37.000Z">2019-01-03</time></div>
-                    <a href="/2019/01/03/Hello-World/" class="has-link-black-ter is-size-6">QaQ</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-01-04T01:39:49.000Z">2019-01-04</time></div>
+                    <a href="/2019/01/04/HDU3045/" class="has-link-black-ter is-size-6">HDU3045</a>
                     <p class="is-size-7 is-uppercase">
-                        
+                        <a class="has-link-grey -link" href="/categories/DP-斜率游化/">DP 斜率游化</a>
                     </p>
                 </div>
             </div>
@@ -477,7 +490,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt="QaQ" height="28">
+                    <img src="/images/logo.svg" alt="HDU3045" height="28">
                 
                 </a>
                 <p class="is-size-7">
